@@ -26,4 +26,4 @@ jobs:
       
       - name: Sync scripts to server
         run: |
-          rsync -avz --delete ./scripts/ ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/root/scripts/
+          rsync -avz --delete ./ ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/root/scripts/
