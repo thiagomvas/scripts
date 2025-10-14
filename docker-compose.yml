@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  scripts-server:
+    image: nginx:alpine
+    container_name: scripts-server
+    volumes:
+      - ./scripts:/usr/share/nginx/html:ro
+    networks:
+      - shared-network
+    restart: unless-stopped
+
+networks:
+  shared-network:
+    external: true
