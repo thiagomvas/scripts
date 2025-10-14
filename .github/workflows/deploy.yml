@@ -28,8 +28,3 @@ jobs:
         run: |
           rsync -avz --delete ./ ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/root/scripts/
 
-      - name: Reload scripts-server
-        run: |
-          ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} << 'EOF'
-            docker exec scripts-server nginx -s reload || echo "Container not running"
-          EOF  
