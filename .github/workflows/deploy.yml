@@ -27,3 +27,8 @@ jobs:
       - name: Sync scripts to server
         run: |
           rsync -avz --delete ./ ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/root/scripts/
+
+      - name: Restart scripts container
+        run: |
+          ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
+          "docker restart scripts-server || docker-compose -f /root/scripts/docker-compose.yml up -d"
