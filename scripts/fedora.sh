@@ -91,3 +91,13 @@ if confirm "Install Kubernetes via kind (local cluster)?"; then
     info "Kind, kubectl (and optional Helm/k9s) installed."
     info "You can now create a local cluster with: kind create cluster"
 fi
+
+if confirm "Install developer software?"; then
+    info "Installing developer software..."
+    sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+    echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+    dnf check-update
+    sudo dnf install -y code rust cargo nodejs golang
+
+    
+fi
