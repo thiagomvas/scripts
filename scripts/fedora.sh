@@ -5,12 +5,13 @@ warn() { echo -e "\033[1;33m[WARN]\033[0m $*"; }
 error() { echo -e "\033[1;31m[ERROR]\033[0m $*"; }
 
 confirm() {
-    read -r -p "$1 [y/N]: " response
+    read -r -p "$1 [y/N]: " response </dev/tty
     case "$response" in
         [yY][eE][sS]|[yY]) true ;;
         *) false ;;
     esac
 }
+
 
 info "Updating system..."
 sudo dnf -y update
