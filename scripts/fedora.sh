@@ -32,7 +32,6 @@ ESSENTIALS=(
     dotnet-sdk-9.0
     gcc
     make
-    dtop
     tldr
     wireguard-tools
     lsd
