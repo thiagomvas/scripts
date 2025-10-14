@@ -64,12 +64,13 @@ if confirm "Install Kubernetes via kind (local cluster)?"; then
 
     # Install kind
     info "Installing kind..."
-    curl -Lo ./kind "https://kind.sigs.k8s.io/dl/v0.26.0/kind-linux-$KIND_ARCH"
+    [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.30.0/kind-linux-amd64
+    [ $(uname -m) = aarch64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.30.0/kind-linux-arm64
     chmod +x ./kind
     sudo mv ./kind /usr/local/bin/kind
 
     # Install kubectl
-    info "Installing kubectl..."
+    info "Installing kubectl..." 
     KUBECTL_VERSION=$(curl -L -s https://dl.k8s.io/release/stable.txt)
     curl -LO "https://dl.k8s.io/release/$KUBECTL_VERSION/bin/linux/$KUBE_ARCH/kubectl"
     chmod +x kubectl
