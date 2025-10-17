@@ -29,14 +29,12 @@ ESSENTIALS=(
     bash-completion
     zsh
     neovim
-    dotnet-sdk-9.0
     gcc
     make
     tldr
     wireguard-tools
     lsd
     bat
-    httpie
     sqlite3
 )
 
